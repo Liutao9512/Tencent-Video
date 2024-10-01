@@ -1,0 +1,25 @@
+img{
+	vertical-align: bottom;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix::before,.clearfix::after{
+	content:"";
+	display:table;
+	}
+.clearfix::after{
+	clear: both;
+}
+.bd{
+	border: 5px solid #ff0000;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}

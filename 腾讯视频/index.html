@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>腾讯视频</title>
+		<link rel="stylesheet" href="css/basic.css">
+		<style>
+			body{
+				 background-image: linear-gradient(#78f, #f78);
+			}
+			header{
+				position: relative;
+				width: 1910px;
+				height: 1000px;
+				margin: 0px auto;
+				background: transparent;
+			}
+			.plays{
+				position: relative;
+				z-index: 1;
+				width: 1910px;
+				height: 1000px;
+			}
+			.play{
+				position: absolute;
+				width: 1910px;
+				height: 1000px;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				transition:all 3s;
+			}
+			.play:nth-child(1){
+				opacity: 0.8;
+			}
+			.plays .left{
+				position: absolute;
+				bottom: 110px;
+				right: 1050px;
+			}
+			.plays .right{
+				position: absolute;
+				bottom: 110px;
+				right: 20px;
+			}
+			.plays .buttons{
+				position: absolute;
+				bottom: 30px;
+				right: 40px;
+			}
+			.plays .buttons ul{
+				padding-left: 0;
+				display: flex;
+				width: 1000px;
+				justify-content: space-around;
+			}
+			.plays .buttons li{
+				width: 100px;
+				height: 140px;
+			}
+			.plays .buttons li>img{
+				width: 100%;
+				border-radius: 10px;
+				opacity: 0.6;
+			}
+			.plays .buttons li>img:hover{
+				width: 110px;
+				opacity: 1;
+			}
+			.header-top{
+				position: absolute;
+				top: 10px;
+				left: 0;
+				z-index: 2;
+				width: 1910px;
+				height: 82px;
+				
+			}
+			.header-top>img{
+				float: left;
+				height: 46px;
+				margin: 18px 0px 18px 50px;
+			}
+			.search{
+				margin: 18px 0 18px 400px;
+				background:transparent; 
+				height: 46px;
+				border: 1px solid #000;
+				border-radius: 50px;
+				opacity: 0.3;
+			}
+			.search:hover{
+				opacity: 1;
+			}
+			.search>input{
+				border:transparent;
+				background-color: transparent;
+				width: 400px;
+				height: 46px;
+				font-size: 20px;
+			}
+			.search>button{
+				border:transparent;
+				background:url(img/搜索.png) no-repeat 40px;
+				background-size: 40%;
+				background-color: transparent;
+				width: 100px;
+				height: 46px;
+			}
+			.incos{
+				margin-right: 65px;
+			}
+			.incos>li{
+				margin: 0 10px;
+			}
+			.inco{
+				width: 40px;
+				height: 40px;
+			}
+			.inco>a{
+				display: block;
+				width: 40px;
+				height: 40px;
+			}
+			.inco:nth-child(1){
+				background: url(img/会员B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(1):hover{
+				background: url(img/会员A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(1):hover .hide1{
+				display: block;
+			}
+			.hide1{
+				display: none;
+				position: absolute;
+				padding:0;
+				top:60px;
+				left:1400px;
+				background-color: black;
+				border-radius: 10px;
+				width: 400px;
+				height: 400px;
+			}
+			.hide1 h3{
+				text-align: center;
+				color: #fcb409;
+			}
+			.hide1>img{
+				margin: 0;
+				width: 330px;
+				height: 230px;
+				border-radius: 10px;
+				margin-top: 20px;
+				margin-left: 33px;
+			}
+			.hide1>button{
+				margin:30px 0 0 30px;
+				width: 340px;
+				height: 40px;
+				font-size: 20px;
+				border-radius: 50px;
+				background-color: #fcc92e;
+			}
+			.inco:nth-child(2){
+				background: url(img/游戏B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(2):hover{
+				background: url(img/游戏A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(3){
+				background: url(img/历史记录B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(3):hover{
+				background: url(img/历史记录A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(3):hover .hide3{
+				display: block;
+			}
+			.hide3{
+				display: none;
+				position: absolute;
+				top:60px;
+				right:120px;
+				background-color: black;
+				border-radius: 10px;
+				width: 400px;
+				height: 450px;
+				padding-left:0;
+			}
+			.hide3>ul{
+				height: 30px;
+				padding: 20px 0 20px 0;
+				display: flex;
+				justify-content:space-around;
+				align-content: space-around;
+			}
+			.hide3>ul>li{
+				color: #ffffff;
+				text-align: center;
+			}
+			.hide3>div{
+				height: 80px;
+				padding: 20px 0;
+			}
+			.hide3>div>a>img{
+				height: 100%;
+				padding-left: 20px;
+			}
+			.hide3>div>a>p{
+				width: 200px;
+				padding-left: 50px;
+				color: #ffffff;
+			}
+			.inco:nth-child(4){
+				background: url(img/视频B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(4):hover{
+				background: url(img/视频A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(4):hover .hide4{
+				display: block;
+			}
+			.inco:nth-child(5){
+				background: url(img/下载B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(5):hover{
+				background: url(img/下载A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(5):hover .hide5{
+					display: block;
+			}
+			.hide5{
+				display: none;
+				position: absolute;
+				top:60px;
+				right:60px;
+				background-color: black;
+				border-radius: 10px;
+				width: 200px;
+				height: 250px;
+				padding-left: 90px;
+			}
+			.hide5>p{
+				color: #ffffff;
+				margin: 25px 0;
+			}
+			.hide5>button{
+				width: 110px;
+				height: 40px;
+				border-radius: 10px;
+				background-image: linear-gradient(to right,#ffaa00,#ffaa7f,#ffaaff);
+			}
+			.inco:nth-child(6){
+				background: url(img/我的B.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(6):hover{
+				background: url(img/我的A.png) no-repeat;
+				background-size: contain;
+			}
+			.inco:nth-child(6):hover .hide6{
+				display: block;
+			}
+			.hide6{
+				display: none;
+				position: absolute;
+				top:60px;
+				right:0px;
+				background-color: black;
+				border-radius: 10px;
+				width: 400px;
+				height: 450px;
+				padding:0;
+			}
+			.hide6>.title{
+				background-color: #a89371;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
+			.hide6>.title>h3{
+				margin-top: 0;
+				padding-top: 20px;
+				text-align: center;
+				color: #ffffff;
+			}
+			.hide6>.title>p{
+				padding-left: 170px;
+				color: #ffffff;
+				background: url(img/微信.png) no-repeat;
+				background-position: 210px 0;
+				background-size: contain;
+			}
+			.hide6>.title>button{
+				margin:10px 0 30px 30px;
+				width: 340px;
+				height: 40px;
+				font-size: 20px;
+				border-radius: 50px;
+				background-color: #fcc92e;
+			}
+			.hide6>a{
+				display: block;
+				width: 360px;
+				padding:15px 0 15px 40px;
+				margin: 0 20px;
+				color: #ffffff;
+				border-bottom:1px solid #fff9e4;
+			}
+			.hide6 a:nth-child(2){
+				background: url(img/个人主页设置.png) no-repeat;
+				background-size: 8%;
+				background-position: 3px 9px;
+			}
+			.hide6 a:nth-child(3){
+				background: url(img/在追.png) no-repeat;
+				background-size: 8%;
+				background-position: 3px 9px;
+			}
+			.hide6 a:nth-child(4){
+				background: url(img/游戏.png) no-repeat;
+				background-size: 8%;
+				background-position: 3px 9px;
+			}
+			.hide6 a:nth-child(5){
+				background: url(img/消息中心.png) no-repeat;
+				background-size: 8%;
+				background-position: 3px 9px;
+			}
+			.hide6>button{
+				margin:15px 0 0 160px;
+				border: transparent;
+				background:transparent;
+				font-size: 20px;
+				color: #ffffff;
+			}
+			.nav{
+				position: absolute;
+				z-index: 2;
+				top: 150px;
+				width: 300px;
+				height: 800px;
+				background: rgb(0, 6, 30, 0.5);
+				border: 1px solid #000;
+				border-radius: 0 10px 10px 0;
+			}
+			.nav>a{
+				display: block;
+				color: #ffffff;
+				width: 220px;
+				height: 50px;
+				font-size: 25px;
+				line-height: 50px;
+				padding:10px 0 10px 80px;
+			}
+			.nav>a:hover{
+				color: #00a4ff;
+				font-size: 30px;
+			}
+			.nav>a:nth-child(1){
+				background: url(img/1收藏B.png) no-repeat;
+				background-position: 25px 15px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(1):hover{
+				background: url(img/1收藏A.png) no-repeat;
+				background-position: 25px 15px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(2){
+				background: url(img/视频.png) no-repeat;
+				background-position: 25px 16px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(2):hover{
+				background: url(img/视频A.png) no-repeat;
+				background-position: 25px 16px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(3){
+				background: url(img/视频.png) no-repeat;
+				background-position: 25px 16px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(3):hover{
+				background: url(img/视频A.png) no-repeat;
+				background-position: 25px 16px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(4){
+				background: url(img/电影B.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(4):hover{
+				background: url(img/电影A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(5){
+				background: url(img/综艺B.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(5):hover{
+				background: url(img/综艺A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(6){
+				background: url(img/动漫B.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(6):hover{
+				background: url(img/动漫A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(7){
+				background: url(img/少儿B.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(7):hover{
+				background: url(img/少儿.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(8){
+				background: url(img/体育世界.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(8):hover{
+				background: url(img/体育世界A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(9){
+				background: url(img/视频.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(9):hover{
+				background: url(img/视频A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(10){
+				background: url(img/会员.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(10):hover{
+				background: url(img/会员A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(11){
+				background: url(img/音乐B.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.nav>a:nth-child(11):hover{
+				background: url(img/音乐A.png) no-repeat;
+				background-position: 25px 17px;
+				background-size: 12%;
+			}
+			.main{
+				background-color: #3b3b3b;
+				width: 1910px;
+				height: 2300px;
+				margin: 0 auto;
+				padding-top: 40px;
+				border-bottom: 4px solid #c9d1da;
+			}
+			.likes{
+				width: 1910px;
+				height: 400px;
+			}
+			.like{
+				display: flex;
+				justify-content:space-around;
+				align-content: space-around;
+			}
+			.likes dt{
+				width: 150px;
+				height: 50px;
+				margin-left: 65px;
+				padding-bottom: 40px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 50px;
+				color: #ffffff;
+			}
+			.like a{
+				display: block;
+				width: 400px;
+				height: 268px;
+			}
+			.likes video{
+				width: 400px;
+				height: 268px;
+				border-radius: 20px;
+				/* 盒子阴影 */
+				box-shadow: 18px 18px 30px rgba(0, 0, 0, 0.2),
+					-18px -18px 30px rgba(255, 255, 255, 1);
+				/* 过渡时间 ease-out是指先快速 后慢速 */
+				transition: all 0.2s ease-out;
+			}
+			.like video:hover{
+				width: 410px;
+				height: 275px;
+				/* inset 是内部阴影 默认是外部阴影outset */
+				box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 rgba(255, 255, 255, 0.8),
+					inset 18px 18px 30px rgba(0, 0, 0, 0.1),
+					inset -18px -18px 30px rgba(255, 255, 255, 1);
+			}
+			/* .add{
+				display: none;
+			}
+			.add>a{
+				display: block;
+				width: 400px;
+				height: 268px;
+				border-radius: 20px;
+				margin-left: 40px;
+				background: #a9b099;
+				opacity: 0.5;
+			}
+			.add>a>img{
+				margin: 0 0 0 30px;
+			} */
+			
+			.hot-broadcast{
+				width: 1910px;
+				height: 900px;
+				position: relative;
+			}
+			.hot-broadcast .title{
+				margin: 0 65px;
+			}
+			.hot-broadcast>dl>dt{
+				width: 150px;
+				height: 50px;
+				/* margin-left: 65px; */
+				font-size: 30px;
+				text-align: center;
+				line-height: 50px;
+				color: #ffffff;
+			}
+			.hot-broadcast>dl>dd{
+				height: 50px;
+				margin-left: 40px;
+				font-size: 20px;
+				text-align: center;
+				line-height: 50px;
+			}
+			.hot-broadcast>dl>div{
+				width: 10px;
+				height: 10px;
+				background-color: transparent; /* 模块背景为透明 */
+				border-color: #ffffff;
+				border-style: solid;
+				border-width: 2px 2px 0 0;
+				margin-top: 18px;
+				transform: rotate(45deg);  /*箭头方向可以自由切换角度*/
+			}
+			.hot-broadcast>dl>dd>a{
+				color: #ffffff;
+			}
+			.videos{
+				width: 1910px;
+				display: flex;
+				justify-content:space-around;
+				flex-wrap: wrap;
+				align-content: space-around;
+			}
+			.video{
+				width: 220px;
+				height: 308px;
+				margin: 50px;
+			}
+			.video ul{
+				display: none;
+				position: absolute;
+				padding: static;
+				width: 200px;
+				height: 150px;
+				border-radius: 0 0 10px 10px;
+				background-image: linear-gradient(to right, #e79eff, #aaffff);
+			}
+			.videos>.video>a{
+				display: block;
+				width: 220px;
+				height: 308px;
+			}
+			.videos>.video>a>img:hover{
+				width: 240px;
+				height: 328px;
+				/* 盒子阴影 */
+				box-shadow: 18px 18px 30px rgba(183, 255, 247, 0.2),
+					-18px -18px 30px rgba(237, 189, 255, 1.0);
+			}
+			.videos>.video>a>img{
+				width: 220px;
+				height: 308px;
+				border-radius: 10px;
+				transition: all 0.5s ease-out;
+			}
+			.hot-broadcast .video:nth-child(1):hover .conceal1{
+				display: block;
+			}
+			.conceal1{
+				top:330px;
+				left: 121px;
+			}
+			.hot-broadcast .video:nth-child(2):hover .conceal2{
+				display: block;
+			}
+			.conceal2{
+				top:330px;
+				left: 503px;
+			}
+			.hot-broadcast .video:nth-child(3):hover .conceal3{
+				display: block;
+			}
+			.conceal3{
+				top:330px;
+				left: 885px;
+			}
+			.hot-broadcast .video:nth-child(4):hover .conceal4{
+				display: block;
+			}
+			.conceal4{
+				top:330px;
+				left: 1266px;
+			}
+			.hot-broadcast .video:nth-child(5):hover .conceal5{
+				display: block;
+			}
+			.conceal5{
+				top:330px;
+				left: 1649px;
+			}
+			.hot-broadcast .video:nth-child(6):hover .conceal6{
+				display: block;
+			}
+			.conceal6{
+				top:720px;
+				left: 121px;
+			}
+			.hot-broadcast .video:nth-child(7):hover .conceal7{
+				display: block;
+			}
+			.conceal7{
+				top:720px;
+				left: 503px;
+			}
+			.hot-broadcast .video:nth-child(8):hover .conceal8{
+				display: block;
+			}
+			.conceal8{
+				top:720px;
+				left: 885px;
+			}
+			.hot-broadcast .video:nth-child(9):hover .conceal9{
+				display: block;
+			}
+			.conceal9{
+				top:720px;
+				left: 1266px;
+			}
+			.hot-broadcast .video:nth-child(10):hover .conceal10{
+				display: block;
+			}
+			.conceal10{
+				top:720px;
+				left: 1649px;
+			}
+			.recommend{
+				width: 1910px;
+				height: 900px;
+				position: relative;
+			}
+			.recommend>dl>dt{
+				width: 150px;
+				height: 50px;
+				margin-left: 65px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 50px;
+				color: #ffffff;
+			}
+			.recommend>dl>dd{
+				height: 50px;
+				margin-left: 40px;
+				font-size: 20px;
+				text-align: center;
+				line-height: 50px;
+			}
+			.recommend>dl>div{
+				width: 10px;
+				height: 10px;
+				background-color: transparent; /* 模块背景为透明 */
+				border-color: #ffffff;
+				border-style: solid;
+				border-width: 2px 2px 0 0;
+				margin: 18px 5px;
+				transform: rotate(135deg);  /*箭头方向可以自由切换角度*/
+			}
+			.recommend>dl>dd>a{
+				color: #ffffff;
+			}
+			/*最外层容器样式*/
+			.wrap {
+			    width: 1910px;
+			    height: 900px;
+			    position: relative;
+			}
+			/*得到立方体效果*/
+			.cube {
+				position: absolute;
+			    width: 500px;
+			    height: 500px;
+			    margin: 0 auto;
+			    transform-style: preserve-3d;
+			    /*设置动画播放样式:动画对象 播放速度 时间 播放次数*/
+			    animation: rotate linear 20s infinite;
+				top: 200px;
+				left: 700px;
+			}
+			/*动画旋转的方式*/
+			/*得到动画效果*/
+			@-moz-keyframes rotate {                     /*firefox*/
+			    from {
+			        transform: rotateX(0deg) rotateY(0deg);
+			    }
+			    to {
+			        transform: rotateX(360deg) rotateY(360deg);
+			    }
+			}
+			@-webkit-keyframes rotate {                /*sofari chrome*/
+			    from {
+			        transform: rotateX(0deg) rotateY(0deg);
+			    }
+			    to {
+			        transform: rotateX(360deg) rotateY(360deg);
+			    }
+			}
+			@-o-keyframes rotate {                    /*opera*/
+			    from {
+			        transform: rotateX(0deg) rotateY(0deg);
+			    }
+			    to {
+			        transform: rotateX(360deg) rotateY(360deg);
+			    }
+			}
+			/*每张图片的样式*/
+			.cube div {
+			    position: absolute;
+			    width: 500px;
+			    height: 500px;
+			    /*过渡效果*/
+			    transition: all 0.4s;
+			}
+			/*定义所有图片样式*/
+			.pic {
+			    width: 500px;
+			    height: 500px;
+			}
+			.cube .out_front {
+			    transform: rotateY(0deg) translateZ(250px);
+			}
+			.cube .out_back {
+			    transform: translateZ(-250px) rotateY(180deg);
+			}
+			.cube .out_left {
+			    transform: rotateY(-90deg) translateZ(250px);
+			}
+			.cube .out_right {
+			    transform: rotateY(90deg) translateZ(250px);
+			}
+			.cube .out_top {
+			    transform: rotateX(90deg) translateZ(250px);
+			}
+			.cube .out_bottom {
+			    transform: rotateX(-90deg) translateZ(250px);
+			}
+			/*定义小正方体样式*/
+			.cube span {
+			    display: block;
+			    width: 300px;
+			    height: 300px;
+			    position: absolute;
+			    top: 150px;
+			    left: 50px;
+			}
+			.cube .in_pic {
+			    width: 300px;
+			    height: 300px;
+			}
+			.cube .in_front {
+			    transform: rotateY(0deg) translateZ(150px);
+			}
+			.cube .in_back {
+			    transform: translateZ(-150px) rotateY(180deg);
+			}
+			.cube .in_left {
+			    transform: rotateY(-90deg) translateZ(150px);
+			}
+			.cube .in_right {
+			    transform: rotateY(90deg) translateZ(150px);
+			}
+			.cube .in_top {
+			    transform: rotateX(90deg) translateZ(150px);
+			}
+			.cube .in_bottom {
+			    transform: rotateX(-90deg) translateZ(150px);
+			}
+			/*鼠标移入后样式*/
+			.cube:hover .out_front {
+			    transform: rotateY(0deg) translateZ(400px);
+			}
+			.cube:hover .out_back {
+			    transform: translateZ(-400px) rotateY(180deg);
+			}
+			.cube:hover .out_left {
+			    transform: rotateY(-90deg) translateZ(400px);
+			}
+			.cube:hover .out_right {
+			    transform: rotateY(90deg) translateZ(400px);
+			}
+			.cube:hover .out_top {
+			    transform: rotateX(90deg) translateZ(400px);
+			}
+			.cube:hover .out_bottom {
+			    transform: rotateX(-90deg) translateZ(400px);
+			}
+			footer{
+				margin: 0px auto;
+				padding-top: 40px;
+				width: 1910px;
+				background-color: #3b3b3b;
+			}
+			.logo{
+				
+			}
+			.logo img{
+				width: 100px;
+				height: 100px;
+				margin-left: 65px;
+			}
+			.logo h1{
+				color: #ffffff;
+				width: 190px;
+				height: 100px;
+				text-align: center;
+				line-height: 100px;
+				font-style: oblique;
+			}
+			.link1{
+				width: 400px;
+				height: 500px;
+				padding-top: 40px;
+			}
+			.link1 dt{
+				font-size: 30px;
+				color: #666666;
+				margin-left: 135px;
+			}
+			.link1 a{
+				display: block;
+				margin-left: 95px;
+				padding: 15px 0;
+				font-size: 20px;
+				color: #666666;
+			}
+			.link2 p{
+				width: 1400px;
+				margin: 0px auto 15px;
+				padding-top: 40px;
+				color: #666666;
+				font-size: 20px;
+				text-align: center;
+			}
+			.link2 a{
+				display: block;
+				width: 244px;
+				height: 104px;
+				padding: 30px 0 0 550px;
+			}	
+			.danmu {
+			  position: absolute;
+			  right: 0;
+			  white-space: nowrap;
+			  font-size: 24px;
+			  color: white;
+			}
+			
+			@keyframes move {
+			  from {right: 0;}
+			  to {right: calc(100% + 200px);}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="plays">
+				<div class="play"><img src="img/南海归墟大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/很想很想你大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/奔跑吧大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/王牌对王牌大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/志愿军：雄兵出击大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/斗破苍穹大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/一念关山大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/神隐大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="play"><img src="img/斗罗大陆二大.jpg" width="1910" height="1000"alt=""></div>
+				<div class="buttons">
+					<ul>
+						<li class="button"><img src="img/南海归墟1.webp" alt=""></li>
+						<li class="button"><img src="img/《很想很想你》.jpg" alt=""></li>
+						<li class="button"><img src="img/奔跑吧.jpg" alt=""></li>
+						<li class="button"><img src="img/王牌对王牌.webp" alt=""></li>
+						<li class="button"><img src="img/志愿军：雄兵出击.webp" alt=""></li>
+						<li class="button"><img src="img/斗破苍穹.jpg" alt=""></li>
+						<li class="button"><img src="img/一念关山.jpg" alt=""></li>
+						<li class="button"><img src="img/神隐.webp" alt=""></li>
+						<li class="button"><img src="img/斗罗大陆.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+			<div class="header-top clearfix">
+				<img class="fl" src="img/腾讯视频.png" alt="">
+				<div class="search fl clearfix">
+					<input class="fl" type="text" placeholder="王牌对王牌 第8季">
+					<button class="fl"></button>
+				</div>
+				<ul class="incos fr clearfix">
+					<li class="inco fl">
+						<a href=""></a>
+						<ul class="hide1">
+							<h3>扫码优惠开通会员</h3>
+							<img src="img/腾讯视频VIP.png" alt="">
+							<button>立即开通</button>
+						</ul>
+					</li>
+					<li class="inco fl"><a href=""></a></li>
+					<li class="inco fl">
+						<a href=""></a>
+						<ul class="hide3">
+							<ul>
+								<li class="fl">看过</li>
+								<li class="fl">在追</li>
+								<li class="fl">阅订</li>
+							</ul>
+							<div>
+								<a class="clearfix" href="">
+									<img class="fl" src="img/倚天屠龙记.webp" alt="">
+									<p class="fl">噼噼啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪</p>
+								</a>
+							</div>
+							<div>
+								<a class="clearfix" href="">
+									<img class="fl" src="img/南海归墟1.webp" alt="">
+									<p class="fl">品牌啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪啪</p>
+								</a>
+								
+							</div>
+							<div>
+								<a class="clearfix" href="">
+									<img class="fl" src="img/长相思第一季.webp" alt="">
+									<p class="fl">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+								</a>
+							</div>
+						</ul>
+					</li>
+					<li class="inco fl"><a href=""></a></li>
+					<li class="inco fl">
+						<a href=""></a>
+						<ul class="hide5">
+							<p>视频极速下载</p>
+							<p>本地视频播放</p>
+							<p>桌面便捷访问</p>
+							<button>立即体验客户端</button>
+						</ul>
+					</li>
+					<li class="inco fl">
+						<a href="QQ.html"></a>
+						<ul class="hide6">
+							<div class="title">
+								<h3>个人中心</h3>
+								<p>TAO</p>
+								<button>开通腾讯视频VIP</button>
+							</div>
+							<a href="">个人主页</a>
+							<a href="">我的在追</a>
+							<a href="">我的游戏礼包</a>
+							<a href="">VIP消息</a>
+							<button>退出登录</button>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="nav">
+				<a href="">首页</a>
+				<a href="">中视频</a>
+				<a href="">电视剧</a>
+				<a href="">电影</a>
+				<a href="">综艺</a>
+				<a href="">动漫</a>
+				<a href="">少儿</a>
+				<a href="">体育</a>
+				<a href="">纪录片</a>
+				<a href="">VIP会员</a>
+				<a href="">音乐</a>
+			</div>
+		</header>
+		<div class="main">
+			<div class="likes">
+				<dt>猜你喜欢</dt>
+				<div class="like">
+					<li>
+						<a href=""><video src="video/毛雪汪.mp4" autoplay loop muted="muted"></video></a>
+					</li>
+					<li>
+						<a href=""><video src="video/很想很想你.mp4" autoplay loop muted="muted"></video></a>
+					</li>
+					<li>
+						<a href=""><video src="video/王牌对王牌.mp4" autoplay loop muted="muted"></video></a>
+					</li>
+					<li>
+						<a href=""><video src="video/我们的新时代.mp4" autoplay loop muted="muted"></video></a>
+					</li>
+				</div>
+			</div>
+			<div class="hot-broadcast" id="container">
+				<dl class="title clearfix">
+					<dt class="fl">重磅热播</dt>
+					<dd class="fl"><a href="">全部</a></dd>
+					<dd class="fl"><a href="">电视剧</a></dd>
+					<dd class="fl"><a href="">综艺</a></dd>
+					<dd class="fl"><a href="">电影</a></dd>
+					<dd class="fl"><a href="">动漫</a></dd>
+					<dd class="fl"><a href="">少儿</a></dd>
+					<dd class="fl"><a href="">纪录片</a></dd>
+					<div class="arrow-right fr"></div>
+					<dd class="fr"><a href="">1/2</a></dd>
+				</dl>
+				<ul class="videos">
+					<li class="video">
+						<a class="image1" href="https://v.qq.com/x/cover/mzc00200tl9nvn9/j0047a185to.html?j_vid=r00476u64m6&j_cut_vid=k004702nlj6&j_is_win_vid=1&j_start=0"><img src="img/南海归墟1.webp" alt=""></a>
+						<ul class="conceal1">
+							<h4>南海归墟</h4>
+							<p>潘粤明 张雨绮 海洋冒险</p>
+							<p>铁三角海底刺激探险</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image2" href="https://v.qq.com/x/cover/mzc0020061cz2lp.html"><img src="img/黑白密码.webp" alt=""></a>
+						<ul class="conceal2">
+							<!-- <video src="video/南海归墟.mp4" autoplay="autoplay" muted="muted" style="width= 100%; height=100%; object-fit: fill"></video> -->
+							<h4>黑白密码</h4>
+							<p>王子奇 田雨 卧底片</p>
+							<p>硬汉集结！西北野燃鏖战</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image3" href=""><img src="img/王牌对王牌.webp" alt=""></a>
+						<ul class="conceal3">
+							<h4>王牌对王牌</h4>
+							<p>沈腾 华晨宇 游戏节目</p>
+							<p>沈腾黄渤互飚演技淋雨浇头</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image4" href=""><img src="img/现在就出发.webp" alt=""></a>
+						<ul class="conceal4">
+							<h4>现在就出发</h4>
+							<p>孟子义 范丞丞 综艺</p>
+							<p>孟子义唱rap沈腾听入迷了</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image5" href=""><img src="img/此心安处是吾乡.webp" alt=""></a>
+						<ul class="conceal5">
+							<h4>此处安心是吾乡</h4>
+							<p>潘粤明 张雨绮 海洋冒险</p>
+							<p>铁三角海底刺激探险</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image6" href=""><img src="img/长相思第一季.webp" alt=""></a>
+						<ul class="conceal6">
+							<h4>长相思第一季</h4>
+							<p>杨紫 张晚意 古装爱情</p>
+							<p>落难王姬霸气回归鲨疯了</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image7" href=""><img src="img/志愿军：雄兵出击.webp" alt=""></a>
+						<ul class="conceal7">
+							<h4>志愿军：雄兵出击</h4>
+							<p>唐国强 王砚辉 战争</p>
+							<p>志愿军战士冲锋拼刺刀</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image8" href=""><img src="img/很想很想你1.webp" alt=""></a>
+						<ul class="conceal8">
+							<h4>很想很想你</h4>
+							<p>檀健次 周也 偶像爱情</p>
+							<p>檀健次周也一声钟情</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image9" href=""><img src="img/乐游原.webp" alt=""></a>
+						<ul class="conceal9">
+							<h4>乐游原</h4>
+							<p>许凯 景甜 古装爱情</p>
+							<p>甜！许凯景甜19场吻戏</p>
+						</ul>
+					</li>
+					<li class="video">
+						<a class="image10" href=""><img src="img/庆余年第二季.webp" alt=""></a>
+						<ul class="conceal10">
+							<h4>庆余年第二季</h4>
+							<p>潘粤明 张雨绮 海洋冒险</p>
+							<p>铁三角海底刺激探险</p>
+						</ul>
+					</li>
+				</ul>
+
+			</div>
+			<div class="recommend">
+				<dl class="title clearfix">
+					<dt class="fl">为你推荐</dt>
+					<dd class="fl"><a href="">科幻</a></dd>
+					<dd class="fl"><a href="">都市生活</a></dd>
+					<dd class="fl"><a href="">武侠江湖</a></dd>
+					<dd class="fl"><a href="">原创动画</a></dd>
+					<dd class="fl"><a href="">奇幻冒险</a></dd>
+					<dd class="fl"><a href="">东方仙侠</a></dd>
+					<dd class="fl"><a href="">古装爱情</a></dd>
+					<dd class="fl"><a href="">古装爱情</a></dd>
+					<dd class="fl"><a href="">欧美电影</a></dd>
+					<dd class="fl"><a href="">真实事件改编</a></dd>
+					<dd class="fl"><a href="">犯罪动作</a></dd>
+					<div class="arrow-right fr"></div>
+					<dd class="fr"><a href="">更多</a></dd>
+				</dl>
+				<div class="wrap">
+				    <!--部署内外层图片-->
+				    <div class="cube">
+				        <!--前面图片 -->
+				        <div class="out_front">
+				            <img src="img/一念关山.jpg" class="pic">
+				        </div>
+				        <!--后面图片 -->
+				        <div class="out_back">
+				            <img src="img/神隐.webp" class="pic">
+				        </div>
+				        <!--左面图片 -->
+				        <div class="out_left">
+				            <img src="img/斗破苍穹.jpg" class="pic">
+				        </div>
+				        <!--右面图片 -->
+				        <div class="out_right">
+				            <img src="img/月升沧海.webp" class="pic">
+				        </div>
+				        <!--上面图片 -->
+				        <div class="out_top">
+				            <img src="img/西出玉门.webp" class="pic">
+				        </div>
+				        <!--下面图片 -->
+				        <div class="out_bottom">
+				            <img src="img/倚天屠龙记.webp" class="pic">
+				        </div>
+				
+				        <!--小正方体 -->
+				        <span class="in_front">
+				                <img src="img/哈哈哈哈哈哈.webp" class="in_pic">
+				            </span>
+				        <span class="in_back">
+				                 <img src="img/故乡，别来无恙.jpg" class="in_pic">
+				            </span>
+				        <span class="in_left">
+				                <img src="img/香蜜沉沉烬如霜.webp" class="in_pic">
+				            </span>
+				        <span class="in_right">
+				                <img src="img/爱情而已.webp" class="in_pic">
+				            </span>
+				        <span class="in_top">
+				                <img src="img/梦中的那片海.webp" class="in_pic">
+				            </span>
+				        <span class="in_bottom">
+				                <img src="img/乐游原.webp" class="in_pic">
+				            </span>
+				    </div>
+				</div>
+		</div>
+		</div>
+		<footer class="clearfix">
+			<div class="logo clearfix">
+				<img class="fl" src="img/腾讯视频.png" alt="">
+				<h1 class="fl">腾讯视频</h1>
+			</div>
+			<div class="link1 fl">
+				<dl>
+					<dt>服务</dt>
+					<dd><a href="">腾讯视频隐私保护指引</a></dd>
+					<dd><a href="">腾讯视频用户服务协议</a></dd>
+					<dd><a href="">腾讯视频第三方信息共享清单</a></dd>
+					<dd><a href="">腾讯视频已收集个人信息清单</a></dd>
+					<dd><a href="">腾讯儿童隐私保护声明</a></dd>
+					<dd><a href="">腾讯视频系列会员服务协议</a></dd>
+				</dl>
+			</div>
+			<div class="link2 fl">
+				<p>粤网文[2017]6138-1456号 | 网络视听许可证1904073号 | 增值电信业务经营许可证：粤B2-20090059 | 粤公网安备 44030002000001号</p>
+				<p>关于腾讯 | About Tencent | 服务条款 | 广告服务 | 腾讯招聘 | 客服中心 | 网站导航</p>
+				<p>Copyright © 1998 - 2021 Tencent. All Rights Reserved.</p>
+				<p>腾讯公司 版权所有</p>
+				<a href=""><img src="img/工商网监.png" alt=""></a>
+			</div>
+		</footer>
+		<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
